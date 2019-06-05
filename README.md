@@ -72,7 +72,7 @@ It can be used by different SaaS applications.
 
   **flask run --host=0.0.0.0 --port=5000**
 
-- Now open any web browser and type **"localhost:5050/channels"**
+- Now open any web browser and type **"localhost:5000/channels"**
 
   You will see channels information on the browser. 
   
