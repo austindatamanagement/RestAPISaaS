@@ -27,8 +27,32 @@ It can be used by different SaaS applications.
     - Click on Test, if it shows success, click on save and then click on connect. 
     
 - You should have your local environment configured with instant client and the wallet. 
-  If it's not, download and follow the instructions in this file. [Configure Instant Client & Wallet](configureIC.docx)
+    - Download Client Credentials (Wallets): Please follow this link to download the wallet:
+    https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/connect-download-wallet.html#GUID-B06202D2-0597-41AA-9481-3B174F75D4B1
 
+    - Download Instant Client - "Basic Package - All files required to run OCI, OCCI, and JDBC-OCI applications" from the           following link: https://www.oracle.com/technetwork/topics/intel-macsoft-096467.html. 
+      NOTE: You need to accept the agreement first before downloading the package.  Unzip the file.
+
+    - Unzip the Autonomous wallet downloaded, and navigate to sqlnet.ora. 
+        Edit sqlnet.ora as follows:
+
+        nano sqlnet.ora
+
+        WALLET_LOCATION = (SOURCE = (METHOD = file) (METHOD_DATA = (DIRECTORY=**$TNS_ADMIN**)))
+    SSL_SERVER_DN_MATCH=yes
+    
+    - Set LD_LIBRARY_PATH. Type the following command in your command prompt:
+    
+        **export LD_LIBRARY_PATH=Path of your instant client folder:$LD_LIBRARY_PATH**
+    
+        Note: Repeat this everytime you restart the laptop. Or add the above command in your ~/.bash_profile.
+    
+    - Set env variables TNS_AMDIN to point to the wallet folder. Type the following command in your command prompt:
+    
+        **export TNS_ADMIN=Path of your unzipped wallet folder**
+
+        Note: Repeat this everytime you restart the laptop. Or add the above command in your ~/.bash_profile.
+        
 ### **Step 1**: Create channels table in Autonomous Database.
 
 - Download the csv file. [channels.csv](Data/channels.csv)
